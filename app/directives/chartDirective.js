@@ -20,7 +20,7 @@ define([
 
                 x.domain([0, d3.max(data, function(d) { return d.value; })]);
 
-                chart.attr("height", barHeight * data.length);
+                chart.attr('height', barHeight * data.length);
 
                 return chart;
             };
@@ -35,12 +35,10 @@ define([
                 }
                 return retVal;
             };
-
-            console.log($scope);
         };
 
         return {
-            restrict: 'EAC',
+            restrict: 'E',
             scope: {data: '=chartData'},
             template: '',
             controller: chartCtrl,

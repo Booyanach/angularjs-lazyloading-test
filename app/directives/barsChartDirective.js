@@ -12,8 +12,6 @@ define([
             // load up the Controller of the directive we want to extend
             var chartCtrl = elem.find('chart').isolateScope().chart;
 
-            console.log(chartCtrl);
-
             /**
              * callBack for scope.$watch
              * @param  {Array} value - value with the data
@@ -69,7 +67,7 @@ define([
             '?chart'
             ],
             template: template,
-            scope: {data: '=chartData', parentModule: '=parentModule'},
+            scope: {data: '=chartData'},
             link: barLink,
             // controllerAs: 'barChart'
         };
