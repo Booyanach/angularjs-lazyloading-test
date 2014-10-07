@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Iterating Over Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="styles/animations.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a ng-href="#/customers">Customers</a></li>
+                <li><a ng-href="#/orders">Orders</a></li>
+                <li><a ng-href="#/test">Test stackTrace</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div ng-view></div>
+    </main>
+    <script src="scripts/require.js" data-main="app/conf.js"></script>
+</html>

@@ -1,0 +1,42 @@
+body {
+    overflow: hidden;
+}
+
+th {
+    text-align: left;
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+tr.footer {
+    background-color: #efefef;
+}
+
+main {
+    margin-left: 12px;
+    margin-right:25px;
+}
+
+.center {
+    text-align: center;
+}
+
+.delete {
+    color: red;
+    cursor: pointer;
+}
+
+bars-chart {
+    position: relative;
+    width: 100%;
+    height: 20%;
+}
+
+loader {
+    background:url('/images/loader.gif') no-repeat 50% 50% #FFFFFF;
+    top: 52px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
