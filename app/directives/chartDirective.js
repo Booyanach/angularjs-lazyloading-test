@@ -6,6 +6,7 @@ define([
     function chartDirective($parse) {
 
         var chartCtrl = function ($scope, $element, $attrs, $transclude) {
+
             var chart = this;
 
             chart.create = function(config) {
@@ -13,10 +14,8 @@ define([
                     width = config.width,
                     barHeight = config.height,
 
-                    x = d3.scale.linear()
-                    .range([0, width]),
-                    chart = d3.select(config.class)
-                    .attr('width', width);
+                    x = d3.scale.linear().range([0, width]),
+                    chart = d3.select(config.class).attr('width', width);
 
                 x.domain([0, d3.max(data, function(d) { return d.value; })]);
 
@@ -35,15 +34,23 @@ define([
                 }
                 return retVal;
             };
+
+            chart.directive = function() {
+                return {
+                    restrict: 'E',
+                    template: ''
+                };
+            };
         };
 
         return {
             restrict: 'E',
             scope: {data: '=chartData'},
-            template: '',
+            template: '<sv></sv>',
             controller: chartCtrl,
             controllerAs: 'chart'
         };
+
     }
 
     directives.register

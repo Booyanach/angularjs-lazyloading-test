@@ -2,16 +2,19 @@ define([
     './directives/module',
     './directives/templates/barChart',
     './directives/chartDirective',
-    'd3'
-], function (directives, template, parent, d3) {
+    './directives/svDirectiveTools'
+], function (directives, template, parent, sv) {
 
     function barsChart ($parse) {
 
-        var barLink = function (scope, elem, attrs) {
+        if (sv.debug) {
+            template.showCode();
+        }
 
+        var barLink = function (scope, elem, attrs) {
+            var config = angular.fromJson(scope.config);
             // load up the Controller of the directive we want to extend
             var chartCtrl = elem.find('chart').isolateScope().chart;
-
             /**
              * callBack for scope.$watch
              * @param  {Array} value - value with the data
@@ -19,8 +22,8 @@ define([
             var dataWatch = function (value) {
                 if (value) {
                     var data = scope.data,
-                        width = '100%',
-                        barHeight = 35,
+                        width = config && config.width ? config.width : '100%',
+                        barHeight = config && config.height ? config.height : 15,
                         chart = chartCtrl.create({
                         width: width,
                         height: barHeight,
@@ -38,7 +41,11 @@ define([
                         .transition().ease('elastic')
                         .attr('height', barHeight - 1)
                         .attr('style', function(d) {
-                            return 'fill:#' + chartCtrl.color(d) + chartCtrl.color(d) + chartCtrl.color(d);
+                            if (config && config.color) {
+                                return 'fill:' + config.color;
+                            } else {
+                                return 'fill:#' + chartCtrl.color(d) + chartCtrl.color(d) + chartCtrl.color(d);
+                            }
                         });
 
                     bar.append('text')
@@ -54,23 +61,21 @@ define([
                 angular.element('loader').remove();
             };
 
-            elem.find('div.directive-text').text(template);
+            elem.find('textarea.directive-text').val(template.getText());
 
             // Since scope.data is only returned after the ajax call is successful, we need to watch
             // it's value and only draw the chart when this data has been retrieved
             scope.$watch('data', dataWatch);
         };
 
-        return {
-            restrict: 'E',
+        return sv.extend({
             require: [
             '?chart'
             ],
-            template: template,
+            template: template.getHTML(),
             scope: {data: '=chartData'},
-            link: barLink,
-            // controllerAs: 'barChart'
-        };
+            link: barLink
+        });
     }
     directives.register.directive('barsChart', barsChart);
 });

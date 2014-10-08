@@ -9,9 +9,10 @@ define([
     } catch (e) {
         module = ng.module('app.directives', []);
 
-        module.config(function($compileProvider) {
+        module.config(function($compileProvider, $provide) {
             module.register = {
-                directive : $compileProvider.directive
+                directive : $compileProvider.directive,
+                decorator : $provide.decorator
             };
         });
     }

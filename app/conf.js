@@ -6,7 +6,10 @@
         'jquery': '../scripts/jquery',
         'angular': '../scripts/angular',
         'domReady': '../scripts/domReady',
+
         'barChart': './directives/barsChartDirective',
+        'blueBarChart': './directives/blueBarsChartDirective',
+
         'stacktrace': '../scripts/stacktrace',
         'angularRoute': '../scripts/angular-route',
         'angularAnimate': '../scripts/angular-animate'
