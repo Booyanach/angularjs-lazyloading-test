@@ -1,4 +1,6 @@
-define(['./module'], function(controller) {
+define([
+    'servicesModule'
+], function(controller) {
     var loggingService = function($log, $window) {
         var error = function(message, data) {
             callerFn(message, '/logger', data, 'error');
@@ -24,6 +26,6 @@ define(['./module'], function(controller) {
 
     loggingService.$inject = ['$log', '$window'];
 
-    controller.factory('loggingService', loggingService);
+    controller.register.factory('loggingService', loggingService);
 
 });

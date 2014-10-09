@@ -1,6 +1,6 @@
 define([
-'./module',
-'d3'
+    'directivesModule',
+    'd3'
 ], function(directives, d3) {
 
     function chartDirective($parse) {

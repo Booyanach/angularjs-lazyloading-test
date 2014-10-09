@@ -1,6 +1,6 @@
 define([
-'./module.js',
-'blueBarChart'
+    'controllersModule',
+    'blueBarChart'
 ], function(controller, chart) {
 
     function testController($scope, $http) {

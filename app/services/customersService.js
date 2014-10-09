@@ -1,4 +1,6 @@
-define(['./module'], function(controller) {
+define([
+    'servicesModule'
+], function(controller) {
     var customersService = function() {
         var customers = [
             {
@@ -79,6 +81,6 @@ define(['./module'], function(controller) {
 
     };
 
-    controller.service('customersService', customersService);
+    controller.register.service('customersService', customersService);
 
 });

@@ -1,8 +1,10 @@
-define(['./module'], function(services) {
+define([
+    'servicesModule'
+], function(services) {
     var testService = function($http) {
         return {};
     };
 
     testService.$inject = ['$http'];
-    services.service('testService', testService);
+    services.register.service('testService', testService);
 });

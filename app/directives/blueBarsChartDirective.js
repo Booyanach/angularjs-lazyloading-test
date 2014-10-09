@@ -1,5 +1,5 @@
 define([
-    './directives/module',
+    'directivesModule',
     'barChart'
 ], function (directives) {
     function blueChart ($delegate) {
@@ -11,6 +11,7 @@ define([
             return function(scope, elem, attrs) {
                 scope.config = {
                     'color': '#5454AC',
+                    'hover': '#AC5454',
                     'height': 25
                 };
                 link.apply(this, arguments);

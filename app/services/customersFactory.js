@@ -1,4 +1,6 @@
-define(['./module'], function(controller) {
+define([
+    'servicesModule'
+], function(services) {
     var customersFactory = function($http) {
 
         var factory = {};
@@ -13,17 +15,17 @@ define(['./module'], function(controller) {
 
         factory.getOrders = function() {
             return $http.get('/orders');
-        }
+        };
 
         factory.deleteCustomer = function(customerId) {
             return $http.delete('/customers/' + customerId);
-        }
+        };
 
         return factory;
     };
 
     customersFactory.$inject = ['$http'];
 
-    controller.factory('customersFactory', customersFactory);
+    services.register.factory('customersFactory', customersFactory);
 
 });

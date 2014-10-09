@@ -1,5 +1,5 @@
 define([
-    './module'
+    'servicesModule'
 ], function(services) {
 
     function d3LoaderService() {
@@ -22,5 +22,5 @@ define([
             };
     }
 
-    services.service('d3LoaderService', d3LoaderService);
+    services.register.service('d3LoaderService', d3LoaderService);
 });

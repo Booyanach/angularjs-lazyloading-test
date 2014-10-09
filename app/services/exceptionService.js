@@ -1,4 +1,7 @@
-define(['./module', 'stacktrace'], function(services, trace) {
+define([
+    'servicesModule',
+    'stacktrace'
+], function(services, trace) {
     'use strict';
     var exceptionFactory = function($log, $window) {
         function error(exception, cause) {
@@ -21,8 +24,8 @@ define(['./module', 'stacktrace'], function(services, trace) {
     };
 
     exceptionFactory.$inject = ['$log', '$window'];
-    services.factory('exceptionFactory', exceptionFactory);
-    services.provider('$exceptionHandler', {
+    services.register.factory('exceptionFactory', exceptionFactory);
+    services.register.provider('$exceptionHandler', {
         $get: function(exceptionFactory) {
             return (exceptionFactory);
         }

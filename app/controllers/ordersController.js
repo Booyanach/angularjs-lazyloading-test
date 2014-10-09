@@ -1,8 +1,10 @@
-define(['./module.js'], function(controller) {
+define([
+    'controllersModule',
+    'customersFactory',
+    'testService'
+], function(controllers) {
 
     var ordersController = function ($scope, $routeParams, customersFactory, testService) {
-        console.log(customersFactory);
-        console.log(testService);
         var customerId = $routeParams.customerId;
         $scope.customer = null;
 
@@ -21,7 +23,7 @@ define(['./module.js'], function(controller) {
     // Always remember to inject!
     ordersController.$inject = ['$scope', '$routeParams', 'customersFactory', 'testService'];
 
-    controller.register
+    controllers.register
       .controller('ordersController', ordersController);
 
 });

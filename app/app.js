@@ -1,6 +1,6 @@
 define([
     'angular',
-    'services/index',
+    'services/module',
     'controllers/module',
     'directives/module',
     'services/routeResolver'

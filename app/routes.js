@@ -1,6 +1,6 @@
 define([
     './app',
-    'services/routeResolver'
+    'routeResolver'
     ], function(app, resolver) {
     'use strict';
 

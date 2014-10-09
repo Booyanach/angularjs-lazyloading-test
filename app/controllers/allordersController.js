@@ -1,4 +1,7 @@
-define(['./module.js'],function(controller) {
+define([
+    'controllersModule',
+    'customersFactory'
+],function(controller) {
     var allordersController = function ($scope, customersFactory) {
 
         'use strict';

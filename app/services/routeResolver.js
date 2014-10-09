@@ -1,6 +1,8 @@
 'use strict';
 
-define(['./module'], function (module) {
+define([
+    'servicesModule'
+], function (module) {
 
     var routeResolver = function () {
 

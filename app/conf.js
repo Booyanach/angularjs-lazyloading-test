@@ -6,13 +6,25 @@
         'jquery': '../scripts/jquery',
         'angular': '../scripts/angular',
         'domReady': '../scripts/domReady',
+        'stacktrace': '../scripts/stacktrace',
+        'angularRoute': '../scripts/angular-route',
+        'angularAnimate': '../scripts/angular-animate',
 
+        // Modules
+        'servicesModule': './services/module',
+        'directivesModule': './directives/module',
+        'controllersModule': './controllers/module',
+
+        // Controllers
+
+        // Directives
         'barChart': './directives/barsChartDirective',
         'blueBarChart': './directives/blueBarsChartDirective',
 
-        'stacktrace': '../scripts/stacktrace',
-        'angularRoute': '../scripts/angular-route',
-        'angularAnimate': '../scripts/angular-animate'
+        // Services
+        'testService': './services/testService',
+        'routeResolver': './services/routeResolver',
+        'customersFactory': './services/customersFactory'
     },
     // angular does not support AMD out of the box, put it in a shim
     shim: {

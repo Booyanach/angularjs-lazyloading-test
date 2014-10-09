@@ -1,5 +1,5 @@
 define([
-    './directives/module',
+    'directivesModule',
     './directives/templates/barChart',
     './directives/chartDirective',
     './directives/svDirectiveTools'
@@ -37,6 +37,22 @@ define([
                         .attr('transform', function(d, i) { return 'translate(0,' + i * barHeight + ')'; });
 
                     bar.append('rect')
+                    .on('mouseover', function(d) {
+                            d3.select(this).style(
+                                'fill',
+                                config && config.hover ?
+                                config.hover :
+                                chartCtrl.color(d) + chartCtrl.color(d) + chartCtrl.color(d)
+                            );
+                        })
+                    .on('mouseout', function(d) {
+                            d3.select(this).style(
+                                'fill',
+                                config && config.color ?
+                                config.color :
+                                chartCtrl.color(d) + chartCtrl.color(d) + chartCtrl.color(d)
+                            );
+                        })
                         .attr('width', function(d) { return d + '%'; })
                         .transition().ease('elastic')
                         .attr('height', barHeight - 1)

@@ -1,5 +1,5 @@
 define([
-    './module'
+    'directivesModule'
 ], function(directives) {
 
     var tools = function() {

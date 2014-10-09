@@ -1,12 +1,17 @@
-define(['./module.js'],function(controller) {
-    var customersController = function ($scope, $log, $window, $location, customersFactory, appSettings) {
-
+define([
+    'controllersModule',
+    'customersFactory'
+],function(controller) {
+    var customersController = function ($scope, $log, $window, $location, customersFactory) {
         'use strict';
 
         $scope.sortBy = 'name';
         $scope.reverse = false;
         $scope.customers = [];
-        $scope.appSettings = appSettings;
+        $scope.appSettings = {
+            title: 'Customers Application',
+            version: '1.0'
+        };
 
         function init() {
             customersFactory.getCustomers()
@@ -48,7 +53,7 @@ define(['./module.js'],function(controller) {
     };
 
     customersController.$inject = ['$scope', '$log', '$window', '$location',
-    'customersFactory', 'appSettings'];
+    'customersFactory'];
 
     controller.register
       .controller('customersController', customersController);
