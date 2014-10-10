@@ -1,7 +1,7 @@
 define([
     'controllersModule',
     'customersFactory'
-],function(controller) {
+],function(controllers) {
     var allordersController = function ($scope, customersFactory) {
 
         'use strict';
@@ -35,7 +35,7 @@ define([
 
     allordersController.$inject = ['$scope', 'customersFactory'];
 
-    controller.register
+    controllers.register
       .controller('allordersController', allordersController);
 
 });
