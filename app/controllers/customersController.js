@@ -2,21 +2,23 @@ define([
     'controllersModule',
     'customersFactory'
 ],function(controller) {
-    var customersController = function ($scope, $log, $window, $location, customersFactory) {
+    var customersController = function ($log, $window, $location, customersFactory) {
         'use strict';
 
-        $scope.sortBy = 'name';
-        $scope.reverse = false;
-        $scope.customers = [];
-        $scope.appSettings = {
+        var cust = this;
+
+        cust.sortBy = 'name';
+        cust.reverse = false;
+        cust.list = [];
+        cust.appSettings = {
             title: 'Customers Application',
             version: '1.0'
         };
 
         function init() {
             customersFactory.getCustomers()
-                .success(function(customers) {
-                    $scope.customers = customers;
+                .success(function(list) {
+                    cust.list = list;
                 })
                 .error(function(data, status, headers, config) {
                     $log.log(data.error + ' ' + status);
@@ -25,16 +27,16 @@ define([
 
         init();
 
-        $scope.doSort = function(propName) {
-            $scope.sortBy = propName;
-            $scope.reverse = !$scope.reverse;
+        cust.doSort = function(propName) {
+            cust.sortBy = propName;
+            cust.reverse = !cust.reverse;
         };
 
-        $scope.deleteCustomer = function(customerId) {
+        cust.deleteCustomer = function(customerId) {
             customersFactory.deleteCustomer(customerId)
                 .success(function(status) {
                     if (status) {
-                        $scope.customers.forEach(function(customer) {
+                        cust.list.forEach(function(customer) {
                             if (customer.id === customerId) {
                                customer.splice(i,1);
                                return;
@@ -52,7 +54,7 @@ define([
         };
     };
 
-    customersController.$inject = ['$scope', '$log', '$window', '$location',
+    customersController.$inject = ['$log', '$window', '$location',
     'customersFactory'];
 
     controller.register

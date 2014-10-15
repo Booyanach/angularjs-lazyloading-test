@@ -4,7 +4,6 @@ define([
 ], function(controller, chart) {
 
     function testController($scope, $http) {
-
         var test = this;
 
         test.text = 'This page is meant to fail so we can test the $exceptionHandler override';

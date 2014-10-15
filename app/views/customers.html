@@ -4,14 +4,14 @@ Filter: <input type="text" ng-model="customerFilter.name" />
 <br /><br />
 <table class="table table-striped">
     <tr>
-        <th ng-click="doSort('name')">Name</th>
-        <th ng-click="doSort('city')">City</th>
-        <th ng-click="doSort('orderTotal')">Order Total</th>
-        <th ng-click="doSort('joined')">Joined</th>
+        <th ng-click="customers.doSort('name')">Name</th>
+        <th ng-click="customers.doSort('city')">City</th>
+        <th ng-click="customers.doSort('orderTotal')">Order Total</th>
+        <th ng-click="customers.doSort('joined')">Joined</th>
         <th>Orders</th>
         <th>&nbsp;</th>
     </tr>
-    <tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse" class="repeat-animation">
+    <tr ng-repeat="cust in customers.list | filter:customerFilter | orderBy:sortBy:reverse" class="repeat-animation">
         <td>{{ cust.name }}</td>
         <td>{{ cust.city }}</td>
         <td>{{ cust.orderTotal | currency }}</td>
@@ -21,6 +21,6 @@ Filter: <input type="text" ng-model="customerFilter.name" />
     </tr>
 </table>
 <br />
-<span>Total customers: {{ customers.length }}</span>
+<span>Total customers: {{ customers.list.length }}</span>
 <br /><br />
-<footer>Version: {{ appSettings.version }} </footer>
+<footer>Version: {{ customers.appSettings.version }} </footer>
