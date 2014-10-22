@@ -5,6 +5,8 @@ define([
 
         var factory = {};
 
+        factory.$get = function() {};
+
         factory.getCustomers = function() {
             return $http.get('/customers');
         };
@@ -27,5 +29,4 @@ define([
     customersFactory.$inject = ['$http'];
 
     services.register.factory('customersFactory', customersFactory);
-
 });

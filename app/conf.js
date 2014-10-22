@@ -25,9 +25,6 @@
         'testService': './services/testService',
         'routeResolver': './services/routeResolver',
         'customersFactory': './services/customersFactory',
-
-        // Tests
-        'test/customers': './test/customersControllerTest'
     },
     // angular does not support AMD out of the box, put it in a shim
     shim: {

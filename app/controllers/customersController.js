@@ -2,11 +2,9 @@ define([
     'controllersModule',
     'customersFactory'
 ],function(controller) {
-    var customersController = function ($log, $window, $location, customersFactory) {
+    var customersController = function ($log, $window, customersFactory) {
         'use strict';
-
         var cust = this;
-
         cust.sortBy = 'name';
         cust.reverse = false;
         cust.list = [];
@@ -14,7 +12,6 @@ define([
             title: 'Customers Application',
             version: '1.0'
         };
-
         function init() {
             customersFactory.getCustomers()
                 .success(function(list) {
@@ -24,14 +21,11 @@ define([
                     $log.log(data.error + ' ' + status);
                 });
         }
-
         init();
-
         cust.doSort = function(propName) {
             cust.sortBy = propName;
             cust.reverse = !cust.reverse;
         };
-
         cust.deleteCustomer = function(customerId) {
             customersFactory.deleteCustomer(customerId)
                 .success(function(status) {
@@ -46,18 +40,13 @@ define([
                     else {
                         $window.alert('Unable to delete customer');
                     }
-
                 })
                 .error(function(data, status, headers, config) {
                     $log.log(data.error + ' ' + status);
                 });
         };
     };
-
-    customersController.$inject = ['$log', '$window', '$location',
-    'customersFactory'];
-
+    customersController.$inject = ['$log', '$window', 'customersFactory'];
     controller.register
       .controller('customersController', customersController);
-
 });
